@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amit Kumar | IT Systems & DevOps Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-main: 'Inter', sans-serif;
+      --font-code: 'Fira Code', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-code);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .terminal-tag {
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      background: var(--accent-glow);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #030712;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      background: var(--card-bg);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--card-border);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    h2 i {
+      color: var(--accent);
+      font-size: 1.4rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-family: var(--font-code);
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      background: #1f2937;
+      color: var(--text);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid #374151;
+    }
+
+    /* Experience & Projects */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .timeline-item, .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.8rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .item-header h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .item-header .subtitle {
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .item-header .date {
+      font-size: 0.85rem;
+      font-family: var(--font-code);
+      color: var(--text-muted);
+    }
+
+    .timeline-item ul {
+      margin-top: 1rem;
+      margin-left: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-item li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Contact Details */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+    }
+
+    .contact-card i {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="nav-logo">&gt; amit_kumar.sh</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero / About -->
+    <section class="hero" id="about">
+      <span class="terminal-tag"><i class="fas fa-terminal"></i> Systems • Networks • DevOps</span>
+      <h1>Hi, I'm Amit Kumar.</h1>
+      <p>
+        Results-driven IT professional specializing in system administration, network management, and modern CI/CD deployment pipelines. Experienced in managing mission-critical infrastructure, configuring secure networks, and automating application lifecycles.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Get in Touch</a>
+        <a href="https://github.com/AmitKumar8986" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/amit-kumar-a14051283/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2><i class="fas fa-microchip"></i> Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>DevOps &amp; Cloud</h3>
+          <div class="pill-group">
+            <span class="pill">Docker</span>
+            <span class="pill">Kubernetes</span>
+            <span class="pill">AWS EC2 &amp; IAM</span>
+            <span class="pill">Jenkins CI/CD</span>
+            <span class="pill">SonarQube</span>
+            <span class="pill">OWASP ZAP</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Systems &amp; Network</h3>
+          <div class="pill-group">
+            <span class="pill">Network Management</span>
+            <span class="pill">Routers &amp; Switches</span>
+            <span class="pill">Firewall Config</span>
+            <span class="pill">Linux Shell Scripting</span>
+            <span class="pill">Traffic Monitoring</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Monitoring &amp; Data</h3>
+          <div class="pill-group">
+            <span class="pill">Prometheus</span>
+            <span class="pill">Grafana</span>
+            <span class="pill">ELK Stack</span>
+            <span class="pill">InfluxDB</span>
+            <span class="pill">SQL / MySQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Languages &amp; Core</h3>
+          <div class="pill-group">
+            <span class="pill">Python</span>
+            <span class="pill">Linux Administration</span>
+            <span class="pill">Bash</span>
+            <span class="pill">PHP</span>
+            <span class="pill">Network Audits</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2><i class="fas fa-briefcase"></i> Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <h3>Network Administrator</h3>
+              <div class="subtitle">Eduquity Career Technologies Pvt Ltd • Muzaffarpur</div>
+            </div>
+            <span class="date">April 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Managed robust network infrastructure ensuring continuous, high-availability connectivity for educational applications.</li>
+            <li>Configured and maintained switches, routers, and edge firewalls for security and performance.</li>
+            <li>Monitored network traffic using telemetry to preemptively resolve latency and connectivity bottlenecks.</li>
+            <li>Conducted regular security and compliance audits across internal computer systems.</li>
+            <li>Mentored and trained junior technical staff on networking standards and incident management.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <h3>Chief Invigilator &amp; Exam Lab Manager</h3>
+              <div class="subtitle">CAREER FORESIGHT C-DAC ATC • Patna</div>
+            </div>
+            <span class="date">May 2018 – February 2023</span>
+          </div>
+          <ul>
+            <li>Administered secure online examination infrastructure on Linux-based client-server architectures for AFCAT, ICG, and Star exams.</li>
+            <li>Maintained zero-downtime server operations and safeguarded system integrity during high-stakes assessments.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+      <div class="timeline">
+        <div class="project-card">
+          <div class="item-header">
+            <h3>Automated CI/CD Application Security &amp; Monitoring</h3>
+            <span class="date">DevOps &amp; DevSecOps</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 0.5rem 0 1rem;">
+            A continuous delivery pipeline integrating SAST vulnerability assessments and automated notifications. Configured automated build reports, dynamic OWASP security audits during release phases, and metrics aggregation with alerts.
+          </p>
+          <div class="pill-group">
+            <span class="pill">Jenkins</span>
+            <span class="pill">Docker</span>
+            <span class="pill">SonarQube</span>
+            <span class="pill">OWASP ZAP</span>
+            <span class="pill">Prometheus</span>
+            <span class="pill">Grafana</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="item-header">
+            <h3>Microfinance Loan Lending Management System</h3>
+            <span class="date">Full Stack &amp; Database</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 0.5rem 0 1rem;">
+            A relational web application enabling financial teams to manage credit distributions, borrower ledger records, savings plans, and transaction collections efficiently.
+          </p>
+          <div class="pill-group">
+            <span class="pill">PHP</span>
+            <span class="pill">MySQL</span>
+            <span class="pill">Database Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2><i class="fas fa-graduation-cap"></i> Education &amp; Credentials</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <h3>PG Diploma in IT Infrastructure, Systems &amp; Security</h3>
+              <div class="subtitle">CDAC ACTS, Pune</div>
+            </div>
+            <span class="date">August 2023 | 75.6%</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <h3>Master of Computer Applications (MCA)</h3>
+              <div class="subtitle">College of Commerce, Arts &amp; Science, Patna</div>
+            </div>
+            <span class="date">January 2020 | 80.7%</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="item-header">
+            <div>
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <div class="subtitle">Arcade Business College, Patna</div>
+            </div>
+            <span class="date">January 2015 | 75.5%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2><i class="fas fa-envelope-open-text"></i> Connect</h2>
+      <div class="contact-grid">
+        <a href="mailto:amitsinha8986@gmail.com" class="contact-card">
+          <i class="fas fa-at"></i>
+          <div>
+            <strong>Email</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">amitsinha8986@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/AmitKumar8986" target="_blank" class="contact-card">
+          <i class="fab fa-github"></i>
+          <div>
+            <strong>GitHub</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">AmitKumar8986</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/amit-kumar-a14051283/" target="_blank" class="contact-card">
+          <i class="fab fa-linkedin"></i>
+          <div>
+            <strong>LinkedIn</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">amit-kumar-a14051283</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Amit Kumar • Built for GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
