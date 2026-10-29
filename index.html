@@ -1,307 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amit Kumar | IT Systems & DevOps Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amit Kumar | Infrastructure & DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: #111827;
-      --card-border: #1f2937;
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --font-main: 'Inter', sans-serif;
-      --font-code: 'Fira Code', monospace;
+      --bg: #090d16;
+      --card-surface: #0f172a;
+      --card-border: #1e293b;
+      --card-border-hover: #334155;
+      --primary: #38bdf8;
+      --primary-dim: rgba(56, 189, 248, 0.12);
+      --emerald: #10b981;
+      --emerald-dim: rgba(16, 185, 129, 0.15);
+      --amber: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(ellipse at 15% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 10%, rgba(99, 102, 241, 0.06) 0%, transparent 40%);
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
 
-    /* Header Profile */
-    .profile-header {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 2rem;
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* System Status Header */
+    .top-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 2rem;
-    }
-    .badge {
-      display: inline-block;
-      font-family: var(--font-code);
+      font-family: var(--font-mono);
       font-size: 0.8rem;
-      background: var(--accent-glow);
-      color: var(--accent);
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      margin-bottom: 0.8rem;
+      color: var(--text-dim);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.6);
     }
-    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .bio { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; }
-    .quick-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.9rem;
+
+    .status-indicator {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* Tab Controls */
-    .tab-bar {
-      display: flex;
       gap: 0.5rem;
-      background: var(--card-bg);
-      padding: 0.4rem;
-      border-radius: 8px;
-      border: 1px solid var(--card-border);
-      margin-bottom: 1.5rem;
-      overflow-x: auto;
-    }
-    .tab-btn {
-      flex: 1;
-      padding: 0.7rem 1rem;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-    .tab-btn.active {
-      background: #1f2937;
-      color: var(--accent);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      color: var(--emerald);
+      background: var(--emerald-dim);
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-weight: 500;
     }
 
-    /* Tab Content Areas */
-    .tab-panel {
-      display: none;
-      animation: fadeIn 0.25s ease-in-out;
-    }
-    .tab-panel.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+    .status-pulse {
+      width: 7px;
+      height: 7px;
+      background-color: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--emerald);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
-    /* Common Card Styles */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.2rem;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
-    .card-title-row {
+
+    /* Profile / Bio Hero */
+    .hero-card {
+      background: var(--card-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
+
+    .hero-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.4rem;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 1rem;
     }
-    .card-title-row h3 { font-size: 1.15rem; }
-    .card-title-row .org { color: var(--accent); font-size: 0.9rem; }
-    .date-badge { font-family: var(--font-code); font-size: 0.8rem; color: var(--text-muted); }
-    ul.details { margin-top: 0.8rem; margin-left: 1.2rem; color: var(--text-muted); }
-    ul.details li { margin-bottom: 0.35rem; }
+
+    .name-title h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .name-title .role-tag {
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+      background: var(--primary-dim);
+      transform: translateY(-1px);
+    }
+
+    .summary-text {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    /* Terminal Component */
+    .terminal-container {
+      background: #05070d;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .terminal-header {
+      background: #0d121f;
+      padding: 0.5rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-amber { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      color: var(--text-dim);
+      margin-left: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-body {
+      padding: 1rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cmd-line { display: flex; gap: 0.6rem; margin-bottom: 0.4rem; }
+    .cmd-prompt { color: var(--emerald); font-weight: 600; }
+    .cmd-text { color: var(--text); }
+    .cmd-out { color: var(--text-dim); margin-bottom: 0.8rem; }
+
+    /* Modern Tab Navigation */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 0.35rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .tab-button {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-button:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-button.active {
+      background: var(--card-surface);
+      color: var(--primary);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Tab Content Layouts */
+    .tab-pane {
+      display: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .tab-pane.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Standard Cards */
+    .deck-card {
+      background: var(--card-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .deck-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+
+    .deck-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .entity-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .entity-sub {
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    .timestamp-pill {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(30, 41, 59, 0.7);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+    }
+
+    .duty-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .duty-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .duty-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-family: var(--font-mono);
+    }
 
     /* Skills Grid */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .pill-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
-    .pill {
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-box {
+      background: var(--card-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.4rem;
+    }
+
+    .skill-box-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
       font-size: 0.78rem;
-      background: #1f2937;
-      border: 1px solid #374151;
-      padding: 0.25rem 0.55rem;
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 0.3rem 0.6rem;
       border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Projects Tech Stack */
+    .project-body {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0.8rem 0 1.2rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 680px) {
+      .hero-card { padding: 1.5rem; }
+      .name-title h1 { font-size: 1.85rem; }
+      .terminal-container { display: none; }
+      .tab-nav { flex-wrap: nowrap; overflow-x: scroll; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- Profile Summary -->
-  <header class="profile-header">
-    <span class="badge"><i class="fas fa-terminal"></i> Systems • Network • DevOps</span>
-    <h1>Amit Kumar</h1>
-    <p class="bio">
-      Results-driven IT professional specializing in system administration, network topology management, and CI/CD security pipelines.
-    </p>
-    <div class="quick-links">
-      <a href="mailto:amitsinha8986@gmail.com" class="btn-link"><i class="fas fa-envelope"></i> amitsinha8986@gmail.com</a>
-      <a href="https://github.com/AmitKumar8986" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/amit-kumar-a14051283/" target="_blank" class="btn-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <!-- System Status Bar -->
+  <header class="top-status-bar">
+    <div class="status-indicator">
+      <span class="status-pulse"></span>
+      <span>SYSTEMS OPERATIONAL</span>
     </div>
+    <div style="font-size: 0.75rem;">HOST: github-pages • ENV: production</div>
   </header>
 
-  <!-- Tab Selector -->
-  <nav class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('experience', this)"><i class="fas fa-briefcase"></i> Experience</button>
-    <button class="tab-btn" onclick="switchTab('skills', this)"><i class="fas fa-microchip"></i> Skills</button>
-    <button class="tab-btn" onclick="switchTab('projects', this)"><i class="fas fa-layer-group"></i> Projects</button>
-    <button class="tab-btn" onclick="switchTab('education', this)"><i class="fas fa-graduation-cap"></i> Education</button>
+  <!-- Developer Card -->
+  <section class="hero-card">
+    <div class="hero-top">
+      <div class="name-title">
+        <h1>Amit Kumar</h1>
+        <div class="role-tag">&lt;Network Administrator &amp; DevOps Specialist /&gt;</div>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:amitsinha8986@gmail.com" class="contact-btn">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://github.com/AmitKumar8986" target="_blank" rel="noopener noreferrer" class="contact-btn">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/amit-kumar-a14051283/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+    <p class="summary-text"[cite: 1]>
+      IT professional specializing in high-availability network administration, Linux server environments, and secure CI/CD pipeline automation[cite: 1]. Experienced in deploying containerized solutions, vulnerability monitoring, and maintaining mission-critical examination and testing infrastructure[cite: 1].
+    </p>
+  </section>
+
+  <!-- Interactive Terminal Emulator -->
+  <div class="terminal-container">
+    <div class="terminal-header">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-amber"></span>
+      <span class="terminal-dot dot-green"></span>
+      <span class="terminal-title">bash — amit@devops-node-01:~</span>
+    </div>
+    <div class="terminal-body">
+      <div class="cmd-line">
+        <span class="cmd-prompt">amit@devops-node:~$</span>
+        <span class="cmd-text">uptime</span>
+      </div>
+      <div class="cmd-out">up 1,842 days, 14:32, load average: 0.12, 0.08, 0.04</div>
+
+      <div class="cmd-line">
+        <span class="cmd-prompt">amit@devops-node:~$</span>
+        <span class="cmd-text">cat /etc/profile.d/core_competencies.json</span>
+      </div>
+      <div class="cmd-out">
+        { "focus": ["Infrastructure as Code", "Network Audits", "SAST/DAST", "Containerization"], "status": "Available for technical challenges" }
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabbed Controller -->
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-button active" data-tab="experience" role="tab" aria-selected="true">
+      <i class="fas fa-server"></i> Experience
+    </button>
+    <button class="tab-button" data-tab="projects" role="tab" aria-selected="false">
+      <i class="fas fa-terminal"></i> Projects
+    </button>
+    <button class="tab-button" data-tab="skills" role="tab" aria-selected="false">
+      <i class="fas fa-layer-group"></i> Tech Stack
+    </button>
+    <button class="tab-button" data-tab="credentials" role="tab" aria-selected="false">
+      <i class="fas fa-certificate"></i> Education
+    </button>
   </nav>
 
-  <!-- TAB 1: Experience -->
-  <section id="experience" class="tab-panel active">
-    <div class="card">
-      <div class="card-title-row">
+  <!-- PANE 1: Experience -->
+  <section id="experience" class="tab-pane active" role="tabpanel">
+    <div class="deck-card">
+      <div class="deck-card-header">
         <div>
-          <h3>Network Administrator</h3>
-          <div class="org">Eduquity Career Technologies Pvt Ltd • Muzaffarpur</div>
+          <h2 class="entity-title"[cite: 1]>Network Administrator</h2>
+          <div class="entity-sub"[cite: 1]>Eduquity Career Technologies Pvt Ltd • Muzaffarpur, India</div>
         </div>
-        <span class="date-badge">April 2025 – Present</span>
+        <span class="timestamp-pill"[cite: 1]>Apr 2025 – Present</span>
       </div>
-      <ul class="details">
-        <li>Managed network infrastructure and high-availability operations for educational testing platforms.</li>
-        <li>Configured and maintained enterprise routers, switches, and security firewalls.</li>
-        <li>Conducted traffic telemetry audits to isolate latency bottlenecks and resolve issues.</li>
-        <li>Trained junior staff on network protocol handling and incident resolution standard operating procedures.</li>
+      <ul class="duty-list">
+        <li[cite: 1]>Architected and managed multi-subnet network infrastructure supporting continuous educational testing workflows.</li>
+        <li[cite: 1]>Hardened enterprise perimeter defense: configured routers, dynamic switches, and traffic firewall filtering policies.</li>
+        <li[cite: 1]>Monitored live network telemetry to identify latency regressions and resolve link failures before client interruption.</li>
+        <li[cite: 1]>Led internal system security audits and regulatory compliance evaluations across connected lab machines.</li>
+        <li[cite: 1]>Mentored support technicians on network triage, Linux system maintenance, and protocol diagnostics.</li>
       </ul>
     </div>
 
-    <div class="card">
-      <div class="card-title-row">
+    <div class="deck-card">
+      <div class="deck-card-header">
         <div>
-          <h3>Chief Invigilator & Lab Admin</h3>
-          <div class="org">CAREER FORESIGHT C-DAC ATC • Patna</div>
+          <h2 class="entity-title"[cite: 1]>Chief Invigilator &amp; Linux Lab Administrator</h2>
+          <div class="entity-sub"[cite: 1]>Career Foresight C-DAC ATC • Patna, India</div>
         </div>
-        <span class="date-badge">May 2018 – Feb 2023</span>
+        <span class="timestamp-pill"[cite: 1]>May 2018 – Feb 2023</span>
       </div>
-      <ul class="details">
-        <li>Administered live online assessments across Linux-based server networks for AFCAT and ICG.</li>
-        <li>Guaranteed strict zero-downtime operations and security compliance during high-stakes sessions.</li>
+      <ul class="duty-list">
+        <li[cite: 1]>Directed end-to-end server operations hosting high-stakes central defense assessments (AFCAT, ICG, Star) on dedicated Linux servers.</li>
+        <li[cite: 1]>Executed strict zero-downtime procedures, local client authorization controls, and high-concurrency exam security protocols.</li>
       </ul>
     </div>
   </section>
 
-  <!-- TAB 2: Skills -->
-  <section id="skills" class="tab-panel">
+  <!-- PANE 2: Projects -->
+  <section id="projects" class="tab-pane" role="tabpanel">
+    <div class="deck-card">
+      <div class="deck-card-header">
+        <div>
+          <h2 class="entity-title"[cite: 1]>Automated DevSecOps Pipeline with Real-Time Observability</h2>
+          <div class="entity-sub">Security Gateways &amp; CI/CD Architecture</div>
+        </div>
+        <span class="timestamp-pill">Production Build</span>
+      </div>
+      <p class="project-body"[cite: 1]>
+        Designed and implemented an automated Jenkins CI/CD engine integrating static analysis (SAST via SonarQube) and dynamic testing (DAST via OWASP ZAP)[cite: 1]. Configured automated vulnerability gating that sends build alerts directly to developers, backed by Prometheus and Grafana instances tracking pipeline duration and failure telemetry[cite: 1].
+      </p>
+      <div class="tag-container">
+        <span class="tech-tag"[cite: 1]>Jenkins</span>
+        <span class="tech-tag"[cite: 1]>Docker</span>
+        <span class="tech-tag"[cite: 1]>SonarQube</span>
+        <span class="tech-tag"[cite: 1]>OWASP ZAP</span>
+        <span class="tech-tag"[cite: 1]>Prometheus</span>
+        <span class="tech-tag"[cite: 1]>Grafana</span>
+        <span class="tech-tag"[cite: 1]>InfluxDB</span>
+      </div>
+    </div>
+
+    <div class="deck-card">
+      <div class="deck-card-header">
+        <div>
+          <h2 class="entity-title"[cite: 1]>Microfinance Loan Administration Platform</h2>
+          <div class="entity-sub">Database &amp; Transaction Management</div>
+        </div>
+        <span class="timestamp-pill">Full Stack</span>
+      </div>
+      <p class="project-body"[cite: 1]>
+        Engineered a transactional web application for financial groups to record customer lifecycle actions: disbursements, automated installment calculation, borrower ledger tracking, and savings reconciliation[cite: 1].
+      </p>
+      <div class="tag-container">
+        <span class="tech-tag"[cite: 1]>PHP</span>
+        <span class="tech-tag"[cite: 1]>MySQL</span>
+        <span class="tech-tag">Normalized Schema</span>
+        <span class="tech-tag">CRUD Engine</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANE 3: Tech Stack -->
+  <section id="skills" class="tab-pane" role="tabpanel">
     <div class="skills-grid">
-      <div class="card">
-        <h4 style="color: var(--accent);">DevOps &amp; Cloud</h4>
-        <div class="pill-group">
-          <span class="pill">Docker</span>
-          <span class="pill">Kubernetes</span>
-          <span class="pill">AWS EC2</span>
-          <span class="pill">AWS IAM</span>
-          <span class="pill">Jenkins CI/CD</span>
+      <div class="skill-box">
+        <div class="skill-box-title"><i class="fas fa-cubes"></i> Containers &amp; Cloud</div>
+        <div class="tag-container">
+          <span class="tech-tag"[cite: 1]>Docker</span>
+          <span class="tech-tag"[cite: 1]>Kubernetes</span>
+          <span class="tech-tag"[cite: 1]>AWS EC2</span>
+          <span class="tech-tag"[cite: 1]>AWS IAM</span>
+          <span class="tech-tag"[cite: 1]>CI/CD Pipelines</span>
         </div>
       </div>
-      <div class="card">
-        <h4 style="color: var(--accent);">Network &amp; Security</h4>
-        <div class="pill-group">
-          <span class="pill">Routing &amp; Switching</span>
-          <span class="pill">Firewall Config</span>
-          <span class="pill">SonarQube (SAST)</span>
-          <span class="pill">OWASP ZAP</span>
+
+      <div class="skill-box">
+        <div class="skill-box-title"><i class="fas fa-network-wired"></i> Networks &amp; Security</div>
+        <div class="tag-container">
+          <span class="tech-tag"[cite: 1]>Routers &amp; Switches</span>
+          <span class="tech-tag"[cite: 1]>Firewall Policies</span>
+          <span class="tech-tag"[cite: 1]>Vulnerability Auditing</span>
+          <span class="tech-tag"[cite: 1]>SonarQube</span>
+          <span class="tech-tag"[cite: 1]>OWASP ZAP</span>
         </div>
       </div>
-      <div class="card">
-        <h4 style="color: var(--accent);">Monitoring &amp; Data</h4>
-        <div class="pill-group">
-          <span class="pill">Prometheus</span>
-          <span class="pill">Grafana</span>
-          <span class="pill">ELK Stack</span>
-          <span class="pill">MySQL / SQL</span>
+
+      <div class="skill-box">
+        <div class="skill-box-title"><i class="fas fa-chart-line"></i> Monitoring &amp; Data</div>
+        <div class="tag-container">
+          <span class="tech-tag"[cite: 1]>Prometheus</span>
+          <span class="tech-tag"[cite: 1]>Grafana</span>
+          <span class="tech-tag"[cite: 1]>ELK Stack</span>
+          <span class="tech-tag"[cite: 1]>InfluxDB</span>
+          <span class="tech-tag"[cite: 1]>MySQL / SQL</span>
         </div>
       </div>
-      <div class="card">
-        <h4 style="color: var(--accent);">Scripting &amp; OS</h4>
-        <div class="pill-group">
-          <span class="pill">Linux Admin</span>
-          <span class="pill">Shell Scripting</span>
-          <span class="pill">Python</span>
-          <span class="pill">PHP</span>
+
+      <div class="skill-box">
+        <div class="skill-box-title"><i class="fas fa-code"></i> Systems &amp; Code</div>
+        <div class="tag-container">
+          <span class="tech-tag"[cite: 1]>Linux Admin</span>
+          <span class="tech-tag"[cite: 1]>Bash / Shell Scripting</span>
+          <span class="tech-tag"[cite: 1]>Python</span>
+          <span class="tech-tag"[cite: 1]>PHP</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TAB 3: Projects -->
-  <section id="projects" class="tab-panel">
-    <div class="card">
-      <div class="card-title-row">
-        <h3>CI/CD DevSecOps &amp; Monitoring Pipeline</h3>
-        <span class="date-badge">Automation &amp; Security</span>
+  <!-- PANE 4: Education -->
+  <section id="credentials" class="tab-pane" role="tabpanel">
+    <div class="deck-card">
+      <div class="deck-card-header">
+        <div>
+          <h2 class="entity-title"[cite: 1]>PG Diploma in IT Infrastructure, Systems and Security</h2>
+          <div class="entity-sub"[cite: 1]>CDAC ACTS, Pune</div>
+        </div>
+        <span class="timestamp-pill"[cite: 1]>Aug 2023 | 75.6%</span>
       </div>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.4rem;">
-        Constructed a secure continuous delivery workflow utilizing SonarQube and OWASP ZAP for static and dynamic vulnerability inspection, integrated with Prometheus and Grafana for automated pipeline metric tracking.
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;"[cite: 1]>
+        Specialized postgraduate coursework covering distributed network topology, enterprise security implementations, and system virtualization[cite: 1].
       </p>
-      <div class="pill-group">
-        <span class="pill">Jenkins</span>
-        <span class="pill">Docker</span>
-        <span class="pill">SonarQube</span>
-        <span class="pill">OWASP ZAP</span>
-        <span class="pill">Prometheus</span>
-        <span class="pill">Grafana</span>
+    </div>
+
+    <div class="deck-card">
+      <div class="deck-card-header">
+        <div>
+          <h2 class="entity-title"[cite: 1]>Master of Computer Applications (MCA)</h2>
+          <div class="entity-sub"[cite: 1]>College of Commerce, Arts and Science, Patna</div>
+        </div>
+        <span class="timestamp-pill"[cite: 1]>Jan 2020 | 80.7%</span>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-title-row">
-        <h3>Microfinance Loan Lending Platform</h3>
-        <span class="date-badge">Web Application</span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.4rem;">
-        Developed a database-driven system to track member distributions, interest ledger calculation, and scheduled repayments.
-      </p>
-      <div class="pill-group">
-        <span class="pill">PHP</span>
-        <span class="pill">MySQL</span>
-        <span class="pill">Relational Schema</span>
+    <div class="deck-card">
+      <div class="deck-card-header">
+        <div>
+          <h2 class="entity-title"[cite: 1]>Bachelor of Computer Applications (BCA)</h2>
+          <div class="entity-sub"[cite: 1]>Arcade Business College, Patna</div>
+        </div>
+        <span class="timestamp-pill"[cite: 1]>Jan 2015 | 75.5%</span>
       </div>
     </div>
   </section>
 
-  <!-- TAB 4: Education -->
-  <section id="education" class="tab-panel">
-    <div class="card">
-      <div class="card-title-row">
-        <h3>PG Diploma - IT Infrastructure, Systems &amp; Security</h3>
-        <span class="date-badge">Aug 2023 | 75.6%</span>
-      </div>
-      <p style="color: var(--text-muted);">CDAC ACTS, Pune</p>
-    </div>
-    <div class="card">
-      <div class="card-title-row">
-        <h3>Master of Computer Applications (MCA)</h3>
-        <span class="date-badge">Jan 2020 | 80.7%</span>
-      </div>
-      <p style="color: var(--text-muted);">College of Commerce Arts and Science, Patna</p>
-    </div>
-    <div class="card">
-      <div class="card-title-row">
-        <h3>Bachelor of Computer Applications (BCA)</h3>
-        <span class="date-badge">Jan 2015 | 75.5%</span>
-      </div>
-      <p style="color: var(--text-muted);">Arcade Business College, Patna</p>
-    </div>
-  </section>
+  <footer>
+    <p>⚡ Deployed on GitHub Pages • Amit Kumar &copy; 2026</p>
+  </footer>
 </div>
 
 <script>
-  function switchTab(tabId, btn) {
-    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    btn.classList.add('active');
+  // Pro Tab Switching System with URL Hash History
+  function activateTab(tabId) {
+    const targetPane = document.getElementById(tabId);
+    const targetBtn = document.querySelector(`[data-tab="${tabId}"]`);
+
+    if (!targetPane || !targetBtn) return;
+
+    // Deactivate all
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+
+    // Activate targets
+    targetPane.classList.add('active');
+    targetBtn.classList.add('active');
+    targetBtn.setAttribute('aria-selected', 'true');
+
+    // Update URL hash cleanly without forcing a jump
+    if (history.pushState) {
+      history.pushState(null, null, '#' + tabId);
+    } else {
+      location.hash = tabId;
+    }
   }
+
+  // Bind click handlers
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      activateTab(tabId);
+    });
+  });
+
+  // Handle direct loads or browser forward/back buttons (deep linking)
+  window.addEventListener('DOMContentLoaded', () => {
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && document.getElementById(initialHash)) {
+      activateTab(initialHash);
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    const currentHash = window.location.hash.replace('#', '');
+    if (currentHash && document.getElementById(currentHash)) {
+      activateTab(currentHash);
+    }
+  });
 </script>
 
 </body>
